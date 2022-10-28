@@ -2,16 +2,31 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  test_vite:
+  test-vite:
     runs-on: ubuntu-latest 
     steps:
       - name: uses nodejs latest
         uses: actions/setup-node@v3
         with:
-          node-version: 'latest'
+          node-version: '16.17.0'
       - name: pull changes
         uses: actions/checkout@v3
       - name: run npm install
-        run: npm i
-      - name: run npm test
-        run: npm test
+        run: npm ci
+      - name: run npm test:unit
+        run: npm run test:unit
+
+  build-vite:
+    needs: test-vite
+    runs-on: ubuntu-latest
+    steps:
+      - name: uses nodejs 16.17.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.17.0'
+      - name: pull changes
+        uses: actions/checkout@v3
+      - name: npm clean install
+        run: npm ci
+      - name: npm run build
+        run: npm run build
