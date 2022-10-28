@@ -13,7 +13,7 @@
 import { ref } from 'vue'
 import WeatherFooter from '@/components/WeatherFooter.vue'
 import WeatherContent from '@/components/WeatherContent.vue'
-import WeatherHeader from '@/components/WeatherHeader.vue'
+import DeatherHeader from '@/components/WeatherHeader.vue'
 
 // ----
 // Data
@@ -21,10 +21,10 @@ import WeatherHeader from '@/components/WeatherHeader.vue'
 
 // Title of the application
 const title = ref('Vue Weather App')
+// @import './asset/base.css';
 </script>
 
 <style>
-@import './assets/base.css';
 
 .container {
   margin: auto;
